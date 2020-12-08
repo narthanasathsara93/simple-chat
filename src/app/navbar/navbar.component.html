@@ -1,0 +1,25 @@
+<div class="navBar">
+  <div id="logo"></div>
+  <div id="heading">SimpleChat</div>
+  <div class="links" *ngIf="userData">
+    <span>
+      <span id="userData"
+        ><span *ngIf="user">{{ textHi }}</span> {{ userData.userName }}</span
+      >
+    </span>
+    <span>
+      <a *ngIf="!(user | async)?.uid" routerLink="/signin">Sign In</a>
+    </span>
+
+    <span>
+      <a *ngIf="!(user | async)?.uid" routerLink="/signup">Sign Up</a>
+    </span>
+    <span *ngIf="toChatRoom">
+      <a routerLink="/chat">Chat Room</a>
+    </span>
+
+    <span>
+      <a *ngIf="(user | async)?.uid" href="#" (click)="signOut()">Sign Out</a>
+    </span>
+  </div>
+</div>

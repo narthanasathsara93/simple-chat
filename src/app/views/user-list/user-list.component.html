@@ -1,0 +1,9 @@
+<div class="userList">
+  <span>Chat Users</span>
+  <span *ngFor="let user of onlineUsersObservable | async">
+    <app-user-item [user]="user"> </app-user-item>
+  </span>
+  <span *ngFor="let user of offlineUsersObservable | async">
+    <app-user-item [user]="user"> </app-user-item>
+  </span>
+</div>

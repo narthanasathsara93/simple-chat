@@ -1,0 +1,20 @@
+<div
+  class="messageContainer"
+  [ngClass]="{ isOwnMessageContainer: isOwnMessage }"
+>
+  <div class="messageData" [ngClass]="{ isOwnMessageData: isOwnMessage }">
+    <span class="sender" [ngClass]="{ isOwnSender: isOwnMessage }">
+      {{ userName }}
+    </span>
+  </div>
+  <div class="messageContent" [ngClass]="{ isOwnMessageContent: isOwnMessage }">
+    {{ messageContent }}
+  </div>
+
+  <div class="dateAndTimeContainer messageData">
+    <span class="sender"> </span>
+    <span class="timestamp">
+      {{ timeStamp | date: "yyyy-MM-dd HH:mm:ss a" }}
+    </span>
+  </div>
+</div>

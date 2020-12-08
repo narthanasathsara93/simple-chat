@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="signCard">
+    <h2 class="heading">Log In</h2>
+    <input
+      [(ngModel)]="email"
+      type="email"
+      name="email"
+      placeholder="Enter your email"
+      class="formInput"
+    />
+    <input
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+      placeholder="Password"
+      class="formInput"
+    />
+    <button class="btn" id="btn-signin" (click)="signIn()">Sign In</button>
+    <br/>
+    <div class="to-signup">No account? You can register here.</div>
+    <button class="btn" id="btn-signup" routerLink="/signup">Sign Up</button>
+  </div>
+</div>
