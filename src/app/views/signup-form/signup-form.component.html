@@ -28,12 +28,12 @@
       <input
         type="password"
         name="password"
-        placeholder="Choose a password"
+        placeholder="Please use minimum 6 characters or more"
         [(ngModel)]="password"
         class="formInput"
         required
       />
-
+     
       <button
         [disabled]="!signupForm.form.valid"
         type="submit"
