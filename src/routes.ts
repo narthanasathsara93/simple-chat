@@ -1,3 +1,4 @@
+import { VerifyComponent } from './app/views/verify/verify.component';
 import { SignupFormComponent } from '../src/app/views/signup-form/signup-form.component';
 import { SignInFormComponent } from '../src/app/views/signin-form/signin-form.component';
 import { ChatRoomComponent } from '../src/app/views/chat-room/chat-room.component';
@@ -14,5 +15,6 @@ export const appRoutes: Routes = [
     component: ChatRoomComponent,
   },
   { path: 'home', component: HomeComponent },
+  { path: 'verify', component: VerifyComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
