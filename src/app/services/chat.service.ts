@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 
 import { AngularFireDatabase } from '@angular/fire/database';
@@ -21,11 +22,12 @@ export class ChatService {
 
   constructor(
     private db: AngularFireDatabase,
-    private fireAuth: AngularFireAuth
+    private fireAuth: AngularFireAuth,
+    private authService: AuthService
   ) {
     this.fireAuth.authState.subscribe((auth) => {
       if (auth !== undefined && auth !== null) {
-        const uid = this.getUid();
+        const uid = this.authService.getUid();
         this.userObservable = this.db.object('/users/' + uid).valueChanges();
         this.userObservable.subscribe((data) => {
           this.userData = data;
@@ -79,26 +81,6 @@ export class ChatService {
     return date + ' ' + time;
   }
 
-  getUid(): string {
-    let uuid = firebase.default.auth().currentUser.uid;
-    return uuid;
-  }
-  // getUsers(): any {
-  //   const path = '/users';
-  //   const usersSubscription = this.db.list(path, (ref) => {
-  //     return ref.orderByChild('loggedInTimestamp');
-  //   });
-  //   return usersSubscription.valueChanges();
-  // }
 
-  getUsers(status?: string) {
-    const path = '/users';
-    return this.db.list(path, (ref) => {
-      return ref
-        .orderByChild('loggedInTimestamp')
-        .ref.orderByChild('status')
-        .equalTo(status);
-    });
-  }
 
 }

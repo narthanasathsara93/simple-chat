@@ -1,7 +1,7 @@
 //import { AuthGuardService } from './services/auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -26,6 +26,7 @@ import { AuthService } from './services/auth.service';
 import { appRoutes } from '../routes';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './views/home/home.component';
+import { VerifyComponent } from './views/verify/verify.component';
 
 @NgModule({
   declarations: [
@@ -40,11 +41,13 @@ import { HomeComponent } from './views/home/home.component';
     UserListComponent,
     UserItemComponent,
     HomeComponent,
+    VerifyComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    ReactiveFormsModule,
     AngularFireModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
