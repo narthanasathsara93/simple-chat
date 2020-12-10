@@ -15,25 +15,34 @@ export class NavbarComponent implements OnInit {
   userData: any = {};
   textHi: string = null;
   public toChatRoom = false;
+  isSignedIn = false;
   constructor(
     private db: AngularFireDatabase,
     private authService: AuthService
   ) {}
 
+  //get user data from userObservable;
   ngOnInit() {
+ 
     this.user = this.authService.authUser();
     this.user.subscribe((user) => {
       if (user) {
         this.userData = user;
-        this.userObservable = this.db
-          .object('/users/' + user.uid)
-          .valueChanges();
+        this.userObservable = this.authService.getUser(user.uid);
         this.userObservable.subscribe((data) => {
           this.userData = data;
           this.textHi = 'Hi, ';
         });
       }
     });
+
+    const x = localStorage.getItem('isUserLoggedIn');
+    if (x === 'loggedOut') {
+      this.isSignedIn = true;
+    } else if (x === 'loggedIn') {
+      this.isSignedIn = false;
+    }
+    console.log("localStssdfdforage.getItem('isUserLoggedIn')>>", x);
   }
 
   isThisHome() {

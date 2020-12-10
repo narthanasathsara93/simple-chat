@@ -14,9 +14,9 @@
     <span>
       <a *ngIf="!(user | async)?.uid" routerLink="/signup">Sign Up</a>
     </span>
-    <span *ngIf="toChatRoom">
+    <!-- <span *ngIf="toChatRoom">
       <a routerLink="/chat">Chat Room</a>
-    </span>
+    </span> -->
 
     <span>
       <a *ngIf="(user | async)?.uid" href="#" (click)="signOut()">Sign Out</a>
