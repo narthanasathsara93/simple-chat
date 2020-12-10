@@ -19,6 +19,7 @@ export class MessageComponent implements OnInit {
   ownEmail: string;
 
   constructor(private authService: AuthService) {
+    //check the message is sent by logged users.
     authService.authUser().subscribe((user) => {
       this.ownEmail = user.email;
       this.isOwnMessage = this.ownEmail === this.userEmail;
@@ -29,6 +30,6 @@ export class MessageComponent implements OnInit {
     this.messageContent = chatMessage.message;
     this.timeStamp = chatMessage.timeSent;
     this.userEmail = chatMessage.email;
-    this.userName = chatMessage.userName+":";
+    this.userName = chatMessage.userName + ':';
   }
 }

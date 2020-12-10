@@ -16,7 +16,7 @@ export class ChatRoomComponent implements OnInit, AfterViewChecked {
   constructor() {}
 
   ngOnInit(): void {}
-
+  //set the scroll bar always to the bottom of the messages
   scrollToBottom(): void {
     this.feedContainer.nativeElement.scrollTop = this.feedContainer.nativeElement.scrollHeight;
   }

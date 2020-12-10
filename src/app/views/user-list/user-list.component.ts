@@ -1,5 +1,4 @@
-import { User } from '../../models/user.model';
-import { ChatService } from '../../services/chat.service';
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -12,8 +11,10 @@ export class UserListComponent implements OnInit {
   users: any[];
   onlineUsersObservable: Observable<any[]>;
   offlineUsersObservable: Observable<any[]>;
-  constructor(chatService: ChatService) {
-    this.onlineUsersObservable = chatService
+
+  constructor(authService: AuthService) {
+    //get online users
+    this.onlineUsersObservable = authService
       .getUsers('online')
       .snapshotChanges()
       .pipe(
@@ -24,8 +25,8 @@ export class UserListComponent implements OnInit {
           }))
         )
       );
-
-    this.offlineUsersObservable = chatService
+    //get offline users
+    this.offlineUsersObservable = authService
       .getUsers('offline')
       .snapshotChanges()
       .pipe(

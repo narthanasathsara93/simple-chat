@@ -1,4 +1,5 @@
 <div class="feed">
+  <!-- show all the meassages in the db under message. -->
   <div *ngFor="let message of feedObservable | async" class="message">
     <app-message [chatMessage]="message"></app-message>
   </div>

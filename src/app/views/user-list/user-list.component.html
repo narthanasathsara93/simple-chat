@@ -1,5 +1,9 @@
 <div class="userList">
   <span>Chat Users</span>
+
+  <!-- iterate seperately offline and online users.
+  then pass dow them to user-item component. -->
+
   <span *ngFor="let user of onlineUsersObservable | async">
     <app-user-item [user]="user"> </app-user-item>
   </span>
