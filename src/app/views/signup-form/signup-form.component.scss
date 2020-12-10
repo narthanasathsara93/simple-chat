@@ -8,7 +8,7 @@
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.85);
   width: 700px;
-  height: 520px;
+  height: 95%;
   margin: auto;
   margin-top: 30px;
   padding: 80px 30px;
@@ -29,7 +29,7 @@
 }
 
 .btn {
-  height: 54px;
+  height: 40px;
   margin-top: 32px;
   border: none;
   color: white;
@@ -43,20 +43,24 @@
   width: 100%;
 }
 
-#btn-signUp {
+.btn-signUp:enabled {
   background-color: #2a2845;
 }
 
-#btn-signUp:hover {
-  background-color: #4a4865;
+.btn-signUp:hover {
+  background-color: #57bccb;
   transition: ease-in 0.2s;
+  cursor: pointer;
 }
 
-#btn-signUp:disabled {
-  background-color: #eee;
-  color: #999;
+.btn-signUp:disabled {
+  background-color: #85afb6;
+  color: rgb(255, 255, 255);
 }
-
+.btn-cancel {
+  background-color: #b1b1b1;
+  color: rgb(219, 219, 221);
+}
 h2 {
   text-align: center;
   height: 2em;
@@ -68,4 +72,8 @@ a {
 
 .label {
   font-size: 0.9em;
+}
+
+.invalid-email {
+  height: 7%;
 }

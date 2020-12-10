@@ -1,23 +1,49 @@
 <div class="container">
-  <div class="signCard">
-    <h2 class="heading">Log In</h2>
-    <input
-      [(ngModel)]="email"
-      type="email"
-      name="email"
-      placeholder="Enter your email"
-      class="formInput"
-    />
-    <input
-      type="password"
-      [(ngModel)]="password"
-      name="password"
-      placeholder="Password"
-      class="formInput"
-    />
-    <button class="btn" id="btn-signin" (click)="signIn()">Sign In</button>
-    <br/>
-    <div class="to-signup">No account? You can register here.</div>
-    <button class="btn" id="btn-signup" routerLink="/signup">Sign Up</button>
+  <div class="signInCard">
+    <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+      <h2 class="heading">Sign In</h2>
+      <!-- ------------------------------------------------------- -->
+      <input
+        type="text"
+        formControlName="email"
+        class="form-control formInput"
+        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+        placeholder="Enter your email address"
+        required
+      />
+      <div *ngIf="submitted && f.email.errors" class="invalid-email">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">
+          Email must be a valid email address
+        </div>
+      </div>
+      <!-- ------------------------------------------------------- -->
+      <input
+        placeholder="Password"
+        type="password"
+        formControlName="password"
+        class="form-control formInput"
+        [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+        required
+      />
+      <!-- ------------------------------------------------------- -->
+      <div *ngIf="submitted && f.password.errors" class="invalid-email">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.minlength">
+          Password must be at least 6 characters
+        </div>
+      </div>
+      <!-- ------------------------------------------------------- -->
+      <div class="row">
+        <div class="text-center btns">
+          <button [disabled]="!signInForm.valid" class="btn btn-signIn">
+            Sign In
+          </button>
+        </div>
+        <div class="to-signup">
+          No account? create a new account <a routerLink="/signup">here</a>.
+        </div>
+      </div>
+    </form>
   </div>
 </div>
