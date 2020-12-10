@@ -14,16 +14,13 @@ export class NavbarComponent implements OnInit {
   userObservable: Observable<any>;
   userData: any = {};
   textHi: string = null;
-  public toChatRoom = false;
-  isSignedIn = false;
-  constructor(
-    private db: AngularFireDatabase,
-    private authService: AuthService
-  ) {}
+  public toChatRoom = true;
+  isVerified = false;
+  
+  constructor(private authService: AuthService) {}
 
   //get user data from userObservable;
   ngOnInit() {
- 
     this.user = this.authService.authUser();
     this.user.subscribe((user) => {
       if (user) {
@@ -32,23 +29,23 @@ export class NavbarComponent implements OnInit {
         this.userObservable.subscribe((data) => {
           this.userData = data;
           this.textHi = 'Hi, ';
+
+          //temporarily set is verfied or not. This should be removed and must try another way.
+          if (this.isThisVerifyPage()) {
+            this.isVerified = false;
+          } else {
+            this.isVerified = true;
+          }
         });
       }
     });
-
-    const x = localStorage.getItem('isUserLoggedIn');
-    if (x === 'loggedOut') {
-      this.isSignedIn = true;
-    } else if (x === 'loggedIn') {
-      this.isSignedIn = false;
-    }
-    console.log("localStssdfdforage.getItem('isUserLoggedIn')>>", x);
   }
-
-  isThisHome() {
+  // check is user in verify screen
+  isThisVerifyPage(): boolean {
     const currentUrl = window.location.href;
-    return currentUrl.endsWith('/home');
+    return currentUrl.endsWith('/verify');
   }
+  //call the sign out function
   signOut() {
     this.authService.signOut();
   }

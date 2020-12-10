@@ -42,23 +42,23 @@ export class AuthService {
       return false;
     }
   }
-  public get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user !== null && user.emailVerified !== false ? true : false;
-  }
-  isEmailVerified() {
-    const subscription = this.getUser(this.userData.uid).subscribe((data) => {
-      if (data) {
-        subscription.unsubscribe();
-      }
-      if (this.userData.email === data.email) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-    //  this.db.object(path);
-  }
+  // public get isLoggedIn(): boolean {
+  //   const user = JSON.parse(localStorage.getItem('user'));
+  //   return user !== null && user.emailVerified !== false ? true : false;
+  // }
+  // isEmailVerified() {
+  //   const subscription = this.getUser(this.userData.uid).subscribe((data) => {
+  //     if (data) {
+  //       subscription.unsubscribe();
+  //     }
+  //     if (this.userData.email === data.email) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   });
+  //   //  this.db.object(path);
+  // }
   //get current user ID (firebase uuid)
   getUid(): string {
     let uuid = firebase.default.auth().currentUser.uid;
